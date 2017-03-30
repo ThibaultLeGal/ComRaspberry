@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpios>
+    <gpio data-id="101">
+        <nom>LED1</nom>
+        <range>On;Off;BlinkSlow;BlinkFast</range>
+	    <default>Off</default>
+    </gpio>
+    <gpio data-id="102">
+        <nom>LED2</nom>
+        <range>On;Off;BlinkSlow;BlinkFast</range>
+	    <default>On</default>
+    </gpio>
+    <gpio data-id="103">
+        <nom>LED3</nom>
+        <range>On;Off;BlinkSlow;BlinkFast</range>
+	    <default>Off</default>
+    </gpio>
+    <gpio data-id="104">
+        <nom>LED4</nom>
+        <range>On;Off;BlinkSlow;BlinkFast</range>
+	    <default>Off</default>
+    </gpio>
+    <gpio data-id="105">
+        <nom>Output1</nom>
+        <range>true;false</range>
+	    <default>false</default>
+    </gpio>
+    <gpio data-id="106">
+        <nom>Output2</nom>
+        <range>true;false</range>
+	    <default>true</default>
+    </gpio>
+</gpios>

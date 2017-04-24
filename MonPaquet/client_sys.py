@@ -14,7 +14,6 @@ class SysClientProtocol(WebSocketClientProtocol):
         self.serv.append(self)
         self.factory.loop.call_soon(self.factory.loop.stop)
 
-
         # start sending messages every second ..
         #hello()
 

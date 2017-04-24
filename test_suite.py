@@ -7,15 +7,25 @@ import asyncio
 
 class MyTestCases(unittest.TestCase) :
 
-    def printGpios(self):
+    def printGpios(self, GpioList):
         print("--GPIOs--")
-        for key in self.myGpios.keys():
-            print(key + " vaut : " + self.myGpios[key].value)
+        for key in GpioList.keys():
+            print(key + " vaut : " + GpioList[key].value)
         print("--GPIOs--")
 
     def step(self):
         json_gpios = json_parser.write_json(self.myOutputs, True)
         client_sys.SysClientProtocol.sendExtJson(json_gpios)
+        client_banc.BancClientProtocol.listen()
+        self.compare()
+
+    def compare(self):
+        inputjson = client_banc.BancClientProtocol.getInputJson()
+        json_parser.read_json(inputjson, self.myInputs)
+
+        for key in self.myInputs.keys():
+            l_ass = (self.myInputs[key].value == self.myOutputs[key].value)
+            print(key + " : " + str(l_ass))
 
     def setUp(self):
         print('--setup--')
@@ -23,9 +33,10 @@ class MyTestCases(unittest.TestCase) :
         # read conf
         # ect...
 
-        OutputsIpAdress = '127.0.0.1'
-        #OutputsIpAdress = '172.23.240.29'
-        InputsIpAdress = '127.0.0.1'
+        # OutputsIpAdress = '127.0.0.1'
+        OutputsIpAdress = '172.23.240.29'
+        # InputsIpAdress = '127.0.0.1'
+        InputsIpAdress = '172.23.240.29'
 
         # create connection with sys
         self.factory_sys = client_sys.WebSocketClientFactory(u"ws://" + OutputsIpAdress + ":9000")
@@ -53,32 +64,37 @@ class MyTestCases(unittest.TestCase) :
         self.myInputs = dict()
         json_parser.readconfig(self.myInputs, "inputs_def.xml")
         assert self.myInputs.__len__() > 0
+        print("--setupDone--")
 
 
     def runTest(self):
         print("--TestBody--ts")
         #corps du test
 
+
         self.step()
+        print("-- 1 --")
 
         self.myOutputs["LED1"].setValue("On")
         self.myOutputs["LED2"].setValue("Off")
         self.myOutputs["LED3"].setValue("Off")
 
         self.step()
+        print("-- 2 --")
 
         self.myOutputs["LED1"].setValue("Off")
         self.myOutputs["LED2"].setValue("On")
         self.myOutputs["LED3"].setValue("Off")
 
         self.step()
+        print("-- 3 --")
 
         self.myOutputs["LED1"].setValue("Off")
         self.myOutputs["LED2"].setValue("Off")
         self.myOutputs["LED3"].setValue("On")
-        self.myOutputs["LED3"].setValue("On")
 
         self.step()
+        print("-- 4 --")
 
     def tearDown(self):
         print("--TearDown--")

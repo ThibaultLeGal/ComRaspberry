@@ -4,18 +4,18 @@
         <nom>LED1</nom>
         <range>On;Off</range>
 	    <default>Off</default>
-        <pin>11</pin>
+        <pin>33</pin>
     </gpio>
     <gpio data-id="102">
         <nom>LED2</nom>
         <range>On;Off</range>
 	    <default>Off</default>
-        <pin>13</pin>
+        <pin>35</pin>
     </gpio>
     <gpio data-id="103">
         <nom>LED3</nom>
         <range>On;Off</range>
 	    <default>Off</default>
-        <pin>15</pin>
+        <pin>37</pin>
     </gpio>
 </gpios>

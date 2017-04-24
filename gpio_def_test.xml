@@ -4,30 +4,36 @@
         <nom>LED1</nom>
         <range>On;Off;BlinkSlow;BlinkFast</range>
 	    <default>Off</default>
+        <pin>1</pin>
     </gpio>
     <gpio data-id="102">
         <nom>LED2</nom>
         <range>On;Off;BlinkSlow;BlinkFast</range>
 	    <default>On</default>
+        <pin>2</pin>
     </gpio>
     <gpio data-id="103">
         <nom>LED3</nom>
         <range>On;Off;BlinkSlow;BlinkFast</range>
 	    <default>BlinkSlow</default>
+        <pin>3</pin>
     </gpio>
     <gpio data-id="104">
         <nom>LED4</nom>
         <range>On;Off;BlinkSlow;BlinkFast</range>
 	    <default>BlinkFast</default>
+        <pin>4</pin>
     </gpio>
     <gpio data-id="105">
         <nom>Output1</nom>
         <range>true;false</range>
 	    <default>true</default>
+        <pin>5</pin>
     </gpio>
     <gpio data-id="106">
         <nom>Output2</nom>
         <range>true;false</range>
 	    <default>false</default>
+        <pin>5</pin>
     </gpio>
 </gpios>
